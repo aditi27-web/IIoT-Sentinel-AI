@@ -1,0 +1,5 @@
+cve_id,title,service,cvss,port,is_public,patch_available,known_exploit,asset_criticality
+DEMO-CSV-001,Exposed management service,ssh,8.5,22,1,1,1,3
+DEMO-CSV-002,Legacy protocol service,modbus,6.1,502,0,0,0,2
+DEMO-CSV-003,Low-risk configuration,https,2.8,443,0,1,0,1
+DEMO-CSV-004,Unpatched gateway,http,9.2,8080,1,0,1,3

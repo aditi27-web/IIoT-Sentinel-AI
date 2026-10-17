@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title or "IIoT Sentinel AI" }}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><aside class="sidebar"><div class="brand">◈ Sentinel<span>AI</span></div><div class="small">IIoT SECURITY PLATFORM</div>
+<nav><a href="/">Overview</a><a href="/vulnerabilities">Vulnerabilities</a><a href="/analyze">Run ML assessment</a><a href="/devices">IIoT devices</a><a href="/import">Import CSV</a></nav>
+<div class="sidebar-note">Demo environment<br><span>Use only authorized data</span></div></aside>
+<main class="main"><header><div><div class="eyebrow">INDUSTRIAL CYBERSECURITY</div><h1>{{ heading or "Security overview" }}</h1></div><span class="pill">● Demo system</span></header>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+{% block content %}{% endblock %}<footer>IIoT Sentinel AI · Academic prototype · Predictions require human validation</footer></main></body></html>

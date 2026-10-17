@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% set heading="Vulnerability register" %}{% block content %}
+<div class="section-head"><div><h2>Assessment records</h2><p>SQL-backed records and ML severity predictions</p></div><a class="btn" href="/analyze">+ New assessment</a></div>
+<div class="table-wrap"><table><thead><tr><th>ID / CVE</th><th>Title</th><th>Service / port</th><th>CVSS</th><th>Severity</th><th>Recommendation</th><th>CBA</th></tr></thead><tbody>
+{% for r in rows %}<tr><td>#{{r["id"]}}<small>{{r["cve_id"]}}</small></td><td>{{r["title"]}}</td><td>{{r["service"]}} / {{r["port"]}}</td><td>{{"%.1f"|format(r["cvss"])}}</td><td><span class="severity {{r['predicted_severity']|lower}}">{{r["predicted_severity"]}}</span></td><td>{{r["recommendation"]}}</td><td><a href="/vulnerability/{{r['id']}}">{{"%.2f"|format(r["cba_score"])}} ↗</a></td></tr>{% endfor %}
+</tbody></table></div>{% endblock %}

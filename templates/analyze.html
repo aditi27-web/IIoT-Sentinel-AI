@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% set heading="Run ML assessment" %}{% block content %}
+<div class="form-intro"><h2>Assess a vulnerability</h2><p>Enter a known vulnerability record or a synthetic example. The selected model predicts severity and the CBA engine proposes a mitigation priority.</p></div>
+<form method="post" class="form-grid">
+<label>CVE / record ID<input name="cve_id" placeholder="e.g. DEMO-001" value="DEMO-MANUAL"></label>
+<label>Title<input name="title" required value="Manual vulnerability assessment"></label>
+<label>Service<input name="service" value="http" required></label>
+<label>Port<input name="port" type="number" min="0" max="65535" value="8080" required></label>
+<label>CVSS score (0–10)<input name="cvss" type="number" min="0" max="10" step=".1" value="8.0" required></label>
+<label>Asset criticality<select name="asset_criticality"><option value="1">1 — Low</option><option value="2" selected>2 — Medium</option><option value="3">3 — High</option></select></label>
+<label>Internet exposed?<select name="is_public"><option value="0">No</option><option value="1">Yes</option></select></label>
+<label>Patch available?<select name="patch_available"><option value="0">Unknown / no</option><option value="1">Yes</option></select></label>
+<label>Known exploit?<select name="known_exploit"><option value="0">No / unknown</option><option value="1">Yes</option></select></label>
+<label>ML model<select name="model"><option>Gradient Boosting</option><option>Random Forest</option><option>Decision Tree</option><option>Logistic Regression</option><option>MLP Neural Network</option></select></label>
+<div class="full"><button class="btn">Analyze and save</button></div>
+</form><div class="note">This is a decision-support demo, not a live scanner. Severity is predicted by models trained on synthetic examples. Verify findings against authoritative vulnerability data and vendor guidance.</div>
+{% endblock %}
